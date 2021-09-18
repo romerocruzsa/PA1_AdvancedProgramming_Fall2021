@@ -67,6 +67,10 @@ void Particle::repelFromPoint(int x, int y){
 		vel += frc * 0.04;
 	}
 }
+
+void Particle::pauseParticle(int x, int y){
+
+}
 //------------------------------------------------------------------
 void Particle::update(){
 
@@ -94,6 +98,10 @@ void Particle::update(){
 		if( pos.y + vel.y > ofGetHeight() ){
 			pos.y -= ofGetHeight();
 		}
+	}
+	else if( mode == PARTICLE_MODE_PAUSE){
+		vel.x = 0;
+		vel.y = 0;
 	}
 	else if( mode == PARTICLE_MODE_NEAREST_POINTS ){
 		

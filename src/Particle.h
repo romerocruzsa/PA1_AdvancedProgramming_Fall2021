@@ -5,7 +5,8 @@ enum particleMode{
 	PARTICLE_MODE_ATTRACT = 0,
 	PARTICLE_MODE_REPEL,
 	PARTICLE_MODE_NEAREST_POINTS,
-	PARTICLE_MODE_NOISE
+	PARTICLE_MODE_NOISE,
+	PARTICLE_MODE_PAUSE
 };
 
 class Particle{
@@ -17,6 +18,7 @@ class Particle{
 		void setAttractPoints( vector <glm::vec3> * attract );
 		void attractToPoint(int, int);
 		void repelFromPoint(int, int);
+		void pauseParticle(int, int);
 		void reset();
 		void update();
 		void draw();		
