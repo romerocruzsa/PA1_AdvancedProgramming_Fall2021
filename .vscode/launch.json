@@ -25,9 +25,9 @@
         },
         {
             "name": "OSX",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/PA1-ParticleSystem.app/Contents/MacOS/PA1-ParticleSystem",
+            "program": "${workspaceFolder}/bin/pa1-particle-system-pa1-sebastiancruz-iangodreau.app/Contents/MacOS/pa1-particle-system-pa1-sebastiancruz-iangodreau",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

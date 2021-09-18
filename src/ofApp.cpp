@@ -64,7 +64,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause.", 10, 20);
 }
 
 //--------------------------------------------------------------
@@ -85,8 +85,13 @@ void ofApp::keyPressed(int key){
 		currentMode = PARTICLE_MODE_NOISE;
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
 		resetParticles();
-	}	
-		
+	}
+	// pauseParticle function implemented. When key "A" is pressed, particles will stop moving with respect to 
+	// the last mode that was enabled.	
+	if(key == 'a'){
+		currentMode = PARTICLE_MODE_PAUSE;
+		currentModeStr = "A - PARTICLE_MODE_PAUSE: particles are suspended in the air";
+	}		
 	if( key == ' ' ){
 		resetParticles();
 	}
