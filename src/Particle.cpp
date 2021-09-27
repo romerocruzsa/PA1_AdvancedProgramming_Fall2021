@@ -100,10 +100,10 @@ void Particle::update(){
 			pos.y -= ofGetHeight();
 		}
 	}
-	else if( mode == PARTICLE_MODE_PAUSE){
-		vel.x = 0;
-		vel.y = 0;
-	}
+	// else if( mode == PARTICLE_MODE_PAUSE){
+	// 	vel.x = 0;
+	// 	vel.y = 0;
+	// }
 	else if( mode == PARTICLE_MODE_NEAREST_POINTS ){
 		
 		if( attractPoints ){
@@ -168,7 +168,6 @@ void Particle::update(){
 		pos.y = 0;
 		vel.y *= -1.0;
 	}	
-		
 }
 
 //------------------------------------------------------------------
