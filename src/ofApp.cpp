@@ -64,7 +64,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause.", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause. \nPress I to increase size. \nPress D to decrease size.", 10, 20);
 }
 
 //--------------------------------------------------------------
@@ -92,6 +92,18 @@ void ofApp::keyPressed(int key){
 		currentMode = PARTICLE_MODE_PAUSE;
 		currentModeStr = "A - PARTICLE_MODE_PAUSE: particles are suspended in the air";
 	}		
+	if(key == 'i'){			//triples the size of all particles
+		for(unsigned int i = 0; i < p.size(); i++){
+		p[i].scale = 3.0;
+		}
+	}
+	if(key == 'd'){			//thirds the size of all particles
+		for(unsigned int i = 0; i < p.size(); i++){
+		p[i].scale = 1.0/3.0;
+		}
+	}
+
+
 	if( key == ' ' ){
 		resetParticles();
 	}

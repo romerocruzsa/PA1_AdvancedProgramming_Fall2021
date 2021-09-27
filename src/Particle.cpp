@@ -105,7 +105,6 @@ void Particle::update(){
 		vel.y = 0;
 	}
 	else if( mode == PARTICLE_MODE_NEAREST_POINTS ){
-		
 		if( attractPoints ){
 
 			// find closest attractPoint 
@@ -167,7 +166,7 @@ void Particle::update(){
 	else if( pos.y < 0 ){
 		pos.y = 0;
 		vel.y *= -1.0;
-	}	
+	}
 		
 }
 
@@ -187,6 +186,6 @@ void Particle::draw(){
 		ofSetColor(rand() % 255, rand() % 255, rand() % 255);
 	}
 			
-	ofDrawCircle(pos.x, pos.y, scale * 4.0);
+	ofDrawCircle(pos.x, pos.y, (scale * 4.0));
 }
 

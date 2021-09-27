@@ -6,7 +6,8 @@ enum particleMode{
 	PARTICLE_MODE_REPEL,
 	PARTICLE_MODE_NEAREST_POINTS,
 	PARTICLE_MODE_NOISE,
-	PARTICLE_MODE_PAUSE
+	PARTICLE_MODE_PAUSE,
+
 };
 
 class Particle{
@@ -21,7 +22,7 @@ class Particle{
 		void pauseParticle(int, int);
 		void reset();
 		void update();
-		void draw();		
+		void draw();
 		
 		glm::vec3 pos;
 		glm::vec3 vel;
