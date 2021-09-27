@@ -33,6 +33,9 @@ void ofApp::resetParticles(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if(currentMode == PARTICLE_MODE_PAUSE){
+		return;
+	}
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);
 		p[i].update();
@@ -64,7 +67,8 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause. \nPress I to increase size. \nPress D to decrease size.", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause. \nPress I to increase size. \nPress D to decrease size. \nPress F to speed up particles.\nPress S to slow down particles.", 10, 20);
+		
 }
 
 //--------------------------------------------------------------
@@ -104,6 +108,19 @@ void ofApp::keyPressed(int key){
 	}
 
 
+	if(key == 'f'){
+		currentModeStr = "F - PARTICLE_MODE_INCREASE_VELOCITY: increase particle velocity times four";
+		for(unsigned int i = 0; i<p.size(); i++){
+			p[i].vel.x *= 4.0;
+			p[i].vel.y *= 4.0;
+			}		
+	}
+	if(key == 's'){
+		currentModeStr = "S - PARTICLE_MODE_DECREASE_VELOCITY: decrease particle velocity times one quarter";
+		for(unsigned int i = 0; i<p.size(); i++){
+			p[i].vel.x *= 0.25;
+			p[i].vel.y *= 0.25;		}
+	}
 	if( key == ' ' ){
 		resetParticles();
 	}
