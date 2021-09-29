@@ -40,7 +40,19 @@ void ofApp::update(){
 		p[i].setMode(currentMode);
 		p[i].update();
 	}
-	
+	if(replay==true){
+		if(counter==0){
+			reverse(keys.begin(),keys.end());
+			pressedKeys=keys.end();
+			keyPressed(*pressedKeys);
+			keys.pop_back();
+			counter=60;
+			reverse(keys.begin(), keys.end());
+		}
+		else{
+			counter--;
+		}
+	}
 	//lets add a bit of movement to the attract points
 	for(unsigned int i = 0; i < attractPointsWithMovement.size(); i++){
 		attractPointsWithMovement[i].x = attractPoints[i].x + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
@@ -73,6 +85,16 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	if(replay == true){
+		if(keys.size() == 0 || (key == 'c')){
+			resetParticles();
+			replay = false;
+		}
+		else if(key !=* pressedKeys){
+			return;
+		}
+		key =* pressedKeys;
+	}
 	if( key == '1'){
 		currentMode = PARTICLE_MODE_ATTRACT;
 		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 		
@@ -94,7 +116,7 @@ void ofApp::keyPressed(int key){
 	// the last mode that was enabled.	
 	if(key == 'a'){
 		currentMode = PARTICLE_MODE_PAUSE;
-		currentModeStr = "A - PARTICLE_MODE_PAUSE: particles are suspended in the air";
+		// currentModeStr = "A - PARTICLE_MODE_PAUSE: particles are suspended in the air";
 	}		
 	if(key == 'i'){			//triples the size of all particles
 		for(unsigned int i = 0; i < p.size(); i++){
@@ -106,20 +128,28 @@ void ofApp::keyPressed(int key){
 		p[i].scale = 1.0/3.0;
 		}
 	}
-
-
 	if(key == 'f'){
-		currentModeStr = "F - PARTICLE_MODE_INCREASE_VELOCITY: increase particle velocity times four";
 		for(unsigned int i = 0; i<p.size(); i++){
 			p[i].vel.x *= 4.0;
 			p[i].vel.y *= 4.0;
 			}		
 	}
 	if(key == 's'){
-		currentModeStr = "S - PARTICLE_MODE_DECREASE_VELOCITY: decrease particle velocity times one quarter";
 		for(unsigned int i = 0; i<p.size(); i++){
 			p[i].vel.x *= 0.25;
-			p[i].vel.y *= 0.25;		}
+			p[i].vel.y *= 0.25;		
+			}
+	}
+	if(key == 'r'){
+		currentModeStr = "R - RECORD: Recording is in session";
+		record=!record;
+	}
+	if(key == 'p'){
+		currentModeStr = "P - REPLAY: Recording is being played";
+		replay=true;
+	}
+	if(record == true){
+		keys.push_back(key);
 	}
 	if( key == ' ' ){
 		resetParticles();
