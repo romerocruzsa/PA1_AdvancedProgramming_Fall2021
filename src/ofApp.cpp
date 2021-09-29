@@ -94,12 +94,12 @@ void ofApp::keyPressed(int key){
 	}		
 	if(key == 'i'){			//triples the size of all particles
 		for(unsigned int i = 0; i < p.size(); i++){
-		p[i].scale = 3.0;
+		p[i].scale *= 3.0;
 		}
 	}
 	if(key == 'd'){			//thirds the size of all particles
 		for(unsigned int i = 0; i < p.size(); i++){
-		p[i].scale = 1.0/3.0;
+		p[i].scale *= 1.0/3.0;
 		}
 	}
 
