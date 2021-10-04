@@ -24,12 +24,20 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
+
 		particleMode currentMode;
 		string currentModeStr; 
 
+		bool record = false;
+		bool replay = false;
+
+		int counter = 100;
+
+		vector <int> keys;
 		vector <Particle> p;
 		vector <glm::vec3> attractPoints;
 		vector <glm::vec3> attractPointsWithMovement;
+
+		vector<int>::iterator pressedKeys;
 		
 };

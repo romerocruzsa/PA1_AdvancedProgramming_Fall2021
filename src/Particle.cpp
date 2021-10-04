@@ -69,9 +69,6 @@ void Particle::repelFromPoint(int x, int y){
 	}
 }
 
-void Particle::pauseParticle(int x, int y){
-
-}
 //------------------------------------------------------------------
 void Particle::update(){
 
