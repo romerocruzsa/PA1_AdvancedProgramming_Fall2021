@@ -11,6 +11,9 @@ void ofApp::setup(){
 	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 
 
 	resetParticles();
+
+	sound.load("rickroll.mp3");
+	sound.setVolume(0.5);
 }
 
 //--------------------------------------------------------------
@@ -55,7 +58,7 @@ void ofApp::draw(){
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].draw();
 	}
-	
+
 	ofSetColor(190);
 	if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
 		for(unsigned int i = 0; i < attractPoints.size(); i++){
@@ -66,8 +69,12 @@ void ofApp::draw(){
 		}
 	}
 
+	if(currentMode == PARTICLE_MODE_PARTYTIME){
+		ofBackgroundGradient(ofColor(rand() % 255,rand() % 255,rand() % 255), ofColor(rand() % 255,rand() % 255,rand() % 255));
+	}
+
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause. \nPress I to increase size. \nPress D to decrease size. \nPress F to speed up particles.\nPress S to slow down particles.", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode. \nPress A to pause. \nPress I to increase size. \nPress D to decrease size. \nPress F to speed up particles.\nPress S to slow down particles. \nPress T for Party Time (warning: flashing lights!)", 10, 20);
 		
 }
 
@@ -75,7 +82,7 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
 	if( key == '1'){
 		currentMode = PARTICLE_MODE_ATTRACT;
-		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 		
+		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse";			
 	}
 	if( key == '2'){
 		currentMode = PARTICLE_MODE_REPEL;
@@ -89,6 +96,7 @@ void ofApp::keyPressed(int key){
 		currentMode = PARTICLE_MODE_NOISE;
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
 		resetParticles();
+		sound.stop();
 	}
 	// pauseParticle function implemented. When key "A" is pressed, particles will stop moving with respect to 
 	// the last mode that was enabled.	
@@ -123,6 +131,13 @@ void ofApp::keyPressed(int key){
 	}
 	if( key == ' ' ){
 		resetParticles();
+		sound.stop();
+	}
+
+	if(key == 't'){
+		currentMode = PARTICLE_MODE_PARTYTIME;
+		currentModeStr = "T - PARTICLE_MODE_PARTYTIME: ;)";
+		sound.play();
 	}
 }
 

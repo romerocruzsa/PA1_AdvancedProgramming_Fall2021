@@ -184,6 +184,9 @@ void Particle::draw(){
 	else if( mode == PARTICLE_MODE_NEAREST_POINTS ){
 		ofSetColor(rand() % 255, rand() % 255, rand() % 255);
 	}
+	else if(mode == PARTICLE_MODE_PARTYTIME) {
+		ofSetColor(rand() % 255, rand() % 255, rand() % 255);
+	}
 			
 	ofDrawCircle(pos.x, pos.y, (scale * 4.0));
 }
