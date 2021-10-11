@@ -21,7 +21,7 @@ Any project that doesn't compile will receive a 0.
 If a partner has no commits in the repositories, he will receive a 0.
 
 ## Student Notes
-If you have any notes to add for your TA about the project specs or creative additions, you may do so in this section of the README
+We added a "Party time" mode for fun which randomizes the color of the screen and plays a certain classic '80s song using OF's sound functionality. Press the 't' key to toggle the mode, you may press any other key to stop playing the music or simply change to another mode (warning: this mode contains bright flashing lights!).
 
 ### Student Contact Information
 Partner A
