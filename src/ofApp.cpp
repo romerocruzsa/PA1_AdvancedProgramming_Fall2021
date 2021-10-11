@@ -131,13 +131,16 @@ void ofApp::keyPressed(int key){
 	}
 	if( key == ' ' ){
 		resetParticles();
-		sound.stop();
 	}
 
 	if(key == 't'){
 		currentMode = PARTICLE_MODE_PARTYTIME;
 		currentModeStr = "T - PARTICLE_MODE_PARTYTIME: ;)";
 		sound.play();
+	}
+
+	if(key != 't'){
+		sound.stop();
 	}
 }
 
